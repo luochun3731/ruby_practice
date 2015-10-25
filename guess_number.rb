@@ -8,5 +8,5 @@ if num_enter == num
 elsif (num_enter > num - 5) && (num_enter < num + 5)
   puts "Oh, so close! The number is #{num}"
 else
-	puts "Nope, I was thinking of #{num}."
+  puts "Nope, I was thinking of #{num}."
 end
