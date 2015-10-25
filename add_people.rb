@@ -5,6 +5,7 @@ class Person
 		@age = age
 		@gender = gender 
 	end
+	
 =begin
 	def name
 		@name
