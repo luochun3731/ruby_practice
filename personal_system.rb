@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Employee
   attr_accessor :name, :role, :location
   def initialize(name, role, location)
@@ -12,7 +14,7 @@ end
 def menu
 	puts 'Please choose a action: '
 	puts '------------------------'
-	puts '1. Add a employee.'
+	puts '1. Add an employee.'
 	puts '2. Edit or view an existing employee.'
 	puts '3. End this session.'
 
@@ -67,18 +69,13 @@ def select_record
     end
   end
 
-  if record_found == false 
-  	puts 'No record found.'
-  	puts 'Would you like to try again? [y/n]'
-  	answer = gets.chomp.downcase
-  	if answer == 'y'
-  		select_record
-  	else
-  		menu
-  	end
-  else
-  	record_menu(current_record)
-  end
+	unless record_found
+		puts 'No record found.'
+		puts 'Would you like to try again? [y/n]'
+		answer = gets.chomp.downcase
+		(answer == 'y') ? select_record : menu
+		record_menu(current_record)
+	end
 end
 
 def record_menu(record)
@@ -108,14 +105,14 @@ def record_menu(record)
 end
 
 def view_employee(record)
-	puts record.name
-	puts record.role
-	puts record.location
+	puts 'Name:' + record.name
+	puts 'Role:' + record.role
+	puts 'Location:' + record.location
 	return_to_record_menu(record)
 end
 
 def change_role(record)
-	puts 'What\'s the new role?'
+	puts "What's the new role?"
 	new_role = gets.chomp
 	#old_role = self.role
 	record.role=(new_role)
